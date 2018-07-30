@@ -1,0 +1,22 @@
+{
+  "name": "citest",
+  "version": "1.0.0",
+  "description": "all about test ",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
+  "keywords": [
+    "test",
+    "test"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.4.2"
+  }
+}
