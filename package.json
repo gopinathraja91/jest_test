@@ -4,7 +4,7 @@
   "description": "all about test ",
   "main": "sketch.js",
   "scripts": {
-    "test": "jest"
+    "test": "mocha"
   },
   "jest": {
     "verbose": true,
@@ -17,6 +17,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^23.4.2"
+    "chai": "^4.1.2",
+    "jest": "^23.4.2",
+    "mocha": "^5.2.0"
   }
 }
