@@ -13,9 +13,9 @@ jobs:
 
     working_directory: ~/repo
   
-    branches:
-      only:        
-        - /rc-.*/
+    # branches:
+    # only:        
+    #    - /rc-.*/
 
     steps:
         - checkout
