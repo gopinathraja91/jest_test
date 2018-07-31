@@ -12,9 +12,10 @@ jobs:
 
 
     working_directory: ~/repo
-      - checkout
+     
 
     steps:
+        - checkout
         - run: npm install
         - run: npm test  
  
