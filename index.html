@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -13,29 +14,118 @@
     height:50px;
     width:50px;
 }
-progress{
-    width:100%;
 
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 20px;
+  background-color: #4CAF50;
+}
+body{
+    background-color: #ffffff;
+}
+.container{
+    background: #1f90a2;;
+    height: 794px;
+}
+.row{
+	padding-top:20px
+}
+.rextent{
+	padding:0 0 20px 40px;
+}
+.quesSec{
+	margin-top:40px;
+}
+.header{
+    background: #18545f;
+    color: white;
+}
+.questab{
+	background: white;
+    /* padding: 3px; */
+	height:60px;
+    border-radius: 5px;
+}
+.questab p{
+    position: relative;
+    top: 15px;
+	
 }
 
 
-</style>
-<script>
-var timeleft = 10;
-var downloadTimer = setInterval(function(){
-  document.getElementById("progressBar").value = 10 - --timeleft;
-  if(timeleft < 0){
-    clearInterval(downloadTimer);
-    alert("fdfd")  
+
+.round {
+    position: relative;
   }
   
-},500);
+  .round label {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 28px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 28px;
+  }
+  
+  .round label:after {
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 7px;
+    opacity: 0;
+    position: absolute;
+    top: 8px;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
+  
+  .round input[type="checkbox"] {
+    visibility: hidden;
+  }
+  
+  .round input[type="checkbox"]:checked + label {
+    background-color: #66bb6a;
+    border-color: #66bb6a;
+  }
+  
+  .round input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }
+  .anscont{
+	text-align:center;
+  }
+  
+  .anscont button{
+  
+	width:400px;
+	height:40px;
+	box-shadow: 0px 1px 1px 1px #d6d6d6;
+    border-radius: 7px;
+    border: 1px solid #bfb9b9;
+  }
+</style>
 
-</script>
 </head>
 <body>
     <div class="container">
-        <div class="row">
+		<div class="row header">
+			  <div class="col-md-12 text-center"><h2> QUIZ PAGE </h2> </div>
+		</div>
+		<div class="row clearfix">
+		  <div class="col-md-12"><div id="myProgress"><div id="myBar"></div></div></div>
+		</div>
+
           <div class="row col-md-12">
             <div class="col-md-2"><p><img class="userimg" src="welcome.jpg" alt=""></p></div>
             <div class="col-md-2"><p><img class="userimg" src="welcome.jpg" alt=""></p></div>
@@ -43,20 +133,41 @@ var downloadTimer = setInterval(function(){
             <div class="col-md-2"><p><img class="userimg" src="welcome.jpg" alt=""></p></div>
             <div class="col-md-4"><p></p></div>
           </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12"><progress value="0" max="10" id="progressBar"></progress></div>
 
-            <div class="col-md-10"> Which cricketer had scored highest individual score in first-class cricket? </div>
-            <div class="col-md-10"> Don Bradman</div>
-            <div class="col-md-10">Lane Hutton</div>
-            <div class="col-md-10"> Brian Lara</div>
-            <div class="col-md-10">Gary Sobers</div>
+        <div class="row col-md-12 quesSec">         
 
-        </div>
+            <div class="questab col-md-12 rextent"> <p> Which cricketer had scored highest individual score in first-class cricket? </p></div>
+		</div>
+		<div class="row col-md-12">      
+            <div class="col-md-10 anscont rextent"><button>Don Bradman</button></div>
+            <div class="col-md-10 anscont rextent"><button>Brain Lara</button></div>
+            <div class="col-md-10 anscont rextent"><button>Sachin tendulkar</button></div>
+            <div class="col-md-10 anscont rextent"><button>rahul dravid</button></div>
+
+		</div>
+
       </div>
       
 
+<script>
+function move() {
+  var elem = document.getElementById("myBar");   
+  var width = 1;
+  var id = setInterval(frame, 100);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+	  console.log("helloo")
+	  move();
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
+move()
+
+</script>
 </body>
 </html>
 
